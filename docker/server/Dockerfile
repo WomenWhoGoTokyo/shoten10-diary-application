@@ -1,6 +1,6 @@
 FROM golang:1.15
 
-WORKDIR /wwgt-mm-server
+WORKDIR /wwgt-diary-server
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .

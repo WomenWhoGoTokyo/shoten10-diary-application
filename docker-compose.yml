@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   database:
-    container_name: wwgt-mm-db
+    container_name: wwgt-diary-db
     build:
       context: .
       dockerfile: docker/db/Dockerfile
@@ -13,7 +13,7 @@ services:
     volumes:
       - $PWD/docker/db/data:/var/lib/postgresql/data
   server:
-    container_name: wwgt-mm-server
+    container_name: wwgt-diary-server
     command: "sh ./dev-runscript.sh" # Override for DEV
     build:
       context: .
