@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  database:
+    container_name: wwgt-mm-db
+    build:
+      context: .
+      dockerfile: docker/db/Dockerfile
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "5434:5432"
+    volumes:
+      - $PWD/docker/db/data:/var/lib/postgresql/data
+  server:
+    container_name: wwgt-mm-server
+    command: "sh ./dev-runscript.sh" # Override for DEV
+    build:
+      context: .
+      dockerfile: docker/server/Dockerfile
+    env_file:
+      - .env
+    depends_on:
+      - database
+    networks:
+      - default
+    ports:
+      - "8080:8080"
