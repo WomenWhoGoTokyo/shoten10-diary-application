@@ -44,9 +44,8 @@ func (dr *diaryRepository) Update(ctx context.Context, diary *model.Diary) (*mod
 	return diary, nil
 }
 
-// TODO: あとで確認する
 func (dr *diaryRepository) Delete(ctx context.Context, id int) error {
-	s := `DELETE diaries WHERE id = $1`
+	s := `DELETE FROM diaries WHERE id = $1`
 	result, err := dr.db.ExecContext(ctx, s, id)
 	if err != nil {
 		return err
