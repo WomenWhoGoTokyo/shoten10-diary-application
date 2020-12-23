@@ -25,7 +25,7 @@ func (dr *diaryRepository) Store(ctx context.Context, diary *model.Diary) (*mode
 }
 
 func (dr *diaryRepository) Update(ctx context.Context, diary *model.Diary) (*model.Diary, error) {
-	s := `UPDATE diaries SET title = $1 and description = $2 WHERE id = $3`
+	s := `UPDATE diaries SET title = $1, description = $2 WHERE id = $3`
 	result, err := dr.db.ExecContext(ctx, s,
 		diary.Title,
 		diary.Description,
